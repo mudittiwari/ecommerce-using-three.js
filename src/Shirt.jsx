@@ -28,7 +28,7 @@ export default function Shirt(props) {
   const [newcolor, setnewcolor] = useState({ 'hex': '#ffffff' })
   return (
     <>
-      <div className='hidden md-block'>
+      <div className='hidden md:block'>
         <div className='mt-0 flex' style={{ 'width': '100%', 'height': '100vh', 'maxHeight': '100vh' }}>
           <div className="w-1/4 p-2">
             <SketchPicker width="50%" disableAlpha={true} color={newcolor} onChangeComplete={(color) => {
@@ -49,7 +49,7 @@ export default function Shirt(props) {
 
 
 
-      <div className='block md-hidden'>
+      <div className='block md:hidden'>
         <div className='mt-0 flex flex-col w-full' >
           
           <div className="w-full" style={{ height:'100vh' }}> <Canvas shadows>
