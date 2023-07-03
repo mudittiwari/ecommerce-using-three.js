@@ -5,8 +5,11 @@ import { Texture, TextureLoader } from "three";
 
 export function Croptopcomp(props) {
   const { nodes, materials } = useGLTF("/croptop.gltf");
-  const Texture = useTexture({
+  const logo = useTexture({
     map: 'logo192.png',
+  })
+  const Texture = useTexture({
+    map: 'texture.jpg',
   })
   return (
     <group dispose={null}>
@@ -16,12 +19,12 @@ export function Croptopcomp(props) {
         geometry={nodes.BellyButtonLongSleeveShirt.geometry}
         // material={nodes.BellyButtonLongSleeveShirt.material}
       >
-         <meshStandardMaterial attach="material"  color={props.color}/>
+         <meshStandardMaterial attach="material"  color={props.color} {...Texture}/>
         
      </mesh>
      <mesh position={[0,1430,75]}>
         <boxBufferGeometry attach="geometry" args={[100, 100, 100]}  />
-        <meshStandardMaterial color={props.color}attach="material" {...Texture}  />
+        <meshStandardMaterial color={props.color}attach="material" {...logo}  />
         </mesh>
     </group>
   );

@@ -5,9 +5,12 @@ export function Shirtcomp(props) {
   const { nodes, materials } = useGLTF("/shirt.glb");
   const [show, setshow] = React.useState(false);
     const groupRef = useRef();
-  const Texture = useTexture({
-    map: 'logo192.png',
-  })
+    const logo = useTexture({
+        map: 'logo192.png',
+      })
+      const Texture = useTexture({
+        map: 'texture.jpg',
+      })
  
   console.log(console.log(nodes.T_Shirt_male.geometry))
   return (
@@ -18,11 +21,11 @@ export function Shirtcomp(props) {
         geometry={nodes.T_Shirt_male.geometry}
       >
         
-        <meshStandardMaterial color={props.color}attach="material" />
+        <meshStandardMaterial color={props.color}attach="material" {...Texture} />
         </mesh>
         <mesh position={[0,0,0.1]}>
         <boxBufferGeometry attach="geometry" args={[0.1, .1, .08]}  />
-        <meshStandardMaterial color={props.color}attach="material" {...Texture} />
+        <meshStandardMaterial color={props.color}attach="material" {...logo} />
         </mesh>
     </group>
   );
