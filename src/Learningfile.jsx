@@ -21,7 +21,7 @@ import { SketchPicker } from 'react-color';
 //     <>
 //       <mesh rotation={[10 , 10 ,0]} position={[0,0,0]}>
 //         <boxBufferGeometry attach="geometry" args={[4,4,3]} />
-//         <meshStandardMaterial attach="material" color="yellow" />
+//         <meshStandardMaterial attach="material" color={props.color} />
 //       </mesh>
 //     </>
 //   );
