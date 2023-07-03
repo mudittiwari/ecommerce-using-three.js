@@ -19,7 +19,8 @@ function Scene(props) {
       <Stage environment={null} intensity={1} castShadow={false} >
         <Croptopcomp color={props.color.hex} />
       </Stage>
-      <OrbitControls enableZoom={true}  />
+      <OrbitControls enableZoom={true} minPolarAngle={Math.PI / 2}
+        maxPolarAngle={Math.PI / 2} />
     </>
   );
 }
