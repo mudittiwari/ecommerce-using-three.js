@@ -26,5 +26,4 @@ export default function App() {
 
 // work to do next in this project
 // 1.add color picker in the side bar
-// 2.add texture picker in the sidebar
 
