@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.sketch-picker
+{
+  padding:0px !important;
+}
+.sketch-picker .flexbox-fix
+{
+  margin:0px !important;
+} 
