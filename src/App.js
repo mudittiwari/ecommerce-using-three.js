@@ -24,6 +24,6 @@ export default function App() {
 
 }
 
-// work to do next in this project
-// 1.add color picker in the side bar
-
+// 1. download 10 textures and convert them to black and white so that we can apply them easily
+// 2. add textures in the bottom of color picker and add a button to select them
+// 3. give a feature to disable logo and texture
