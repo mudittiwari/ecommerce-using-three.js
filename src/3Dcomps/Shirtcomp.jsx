@@ -6,11 +6,21 @@ export function Shirtcomp(props) {
   const [show, setshow] = React.useState(false);
   const groupRef = useRef();
   const logo = useTexture({
-    map: 'logo192.png',
+    map: 'https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg',
   })
-  const Texture = useTexture({
+  const Textures = [useTexture({
     map: 'textures/texture.png',
-  })
+  }),useTexture({
+    map: 'textures/texture1.jpg',
+  }),useTexture({
+    map: 'textures/texture2.jpg',
+  }),useTexture({
+    map: 'textures/texture3.jpg',
+  }),useTexture({
+    map: 'textures/texture4.jpg',
+}),useTexture({
+  map: 'textures/texture5.png',
+})]
 
   console.log(console.log(nodes.T_Shirt_male.geometry))
   return (
@@ -21,7 +31,7 @@ export function Shirtcomp(props) {
         geometry={nodes.T_Shirt_male.geometry}
       >
 
-        <meshStandardMaterial color={props.color} attach="material" {...Texture} />
+        <meshStandardMaterial color={props.color} attach="material" {...Textures[props.texture]} />
       </mesh>
       <mesh position={[0, 0, 0.1]}>
         <boxBufferGeometry attach="geometry" args={[0.1, .1, .08]} />
