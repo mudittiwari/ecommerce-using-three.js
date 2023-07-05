@@ -26,8 +26,6 @@ export default function App() {
 }
 
 // 2. fix the position of drawers in the mobile view
-// 3. download logos of some brands and add them to the page(tomorrow)
-// 4. button to remove the logo like in textures
 // 5. add footer
 // 6. add homepage(tomorrow)
 // 7. create homepage design with links to each customizer(tomorrow)

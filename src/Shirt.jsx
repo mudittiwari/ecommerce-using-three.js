@@ -121,9 +121,16 @@ export default function Shirt(props) {
       enableOverlay={false}
       direction='right'
     >
-      <div className="w-full px-5 h-full flex flex-col items-center justify-start">
+      <div className="w-full px-5  h-full overflow-y-scroll flex flex-col items-center justify-start">
+        
         <div style={{ 'width': '100%', 'height': 'max-content' }}>
           <h1 className='text-darktheme-500 text-center my-2 text-2xl font-bold mt-5'>Texture Picker</h1>
+          <div onClick={() => {
+          settexture(-1);
+        }} class="w-40 mb-5 mx-auto rounded-md px-3.5 mt-5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-darktheme-500 text-darktheme-500 hover:text-white">
+          <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-darktheme-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+          <span class="relative text-darktheme-500 transition duration-300 group-hover:text-white ease">Remove Texture</span>
+        </div>
           <div className='w-full flex justify-around flex-wrap'>
             <img src={Texture} className='w-5/12 cursor-pointer my-2' onClick={() => {
               settexture(0)
@@ -143,14 +150,15 @@ export default function Shirt(props) {
             <img src={Texture4} className='w-5/12 cursor-pointer my-2' onClick={() => {
               settexture(5)
             }} />
+            <img src={Texture4} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              settexture(5)
+            }} />
+            <img src={Texture4} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              settexture(5)
+            }} />
           </div>
         </div>
-        <div onClick={() => {
-          settexture(-1);
-        }} class="rounded-md px-3.5 mt-5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-darktheme-500 text-darktheme-500 hover:text-white">
-          <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-darktheme-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-          <span class="relative text-darktheme-500 transition duration-300 group-hover:text-white ease">Remove Texture</span>
-        </div>
+       
       </div>
 
     </Drawer>);
@@ -163,9 +171,15 @@ export default function Shirt(props) {
       enableOverlay={false}
       direction='right'
     >
-     <div className="w-full px-5 h-full flex flex-col items-center justify-start">
+     <div className="w-full px-5 overflow-y-scroll  h-full flex flex-col items-center justify-start">
         <div style={{ 'width': '100%', 'height': 'max-content' }}>
           <h1 className='text-darktheme-500 text-center my-2 text-2xl font-bold mt-5'>Logo Picker</h1>
+          <div onClick={() => {
+          setlogo(-1);
+        }} class="w-36 mb-5 mx-auto rounded-md px-3.5 mt-5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-darktheme-500 text-darktheme-500 hover:text-white">
+          <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-darktheme-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+          <span class="relative text-darktheme-500 transition duration-300 group-hover:text-white ease">Remove Logo</span>
+        </div>
           <div className='w-full flex justify-around flex-wrap'>
             <img src={Logo} className='w-5/12 cursor-pointer my-2' onClick={() => {
               setlogo(0)
@@ -187,12 +201,7 @@ export default function Shirt(props) {
             }} />
           </div>
         </div>
-        <div onClick={() => {
-          setlogo(-1);
-        }} class="rounded-md px-3.5 mt-5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-darktheme-500 text-darktheme-500 hover:text-white">
-          <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-darktheme-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-          <span class="relative text-darktheme-500 transition duration-300 group-hover:text-white ease">Remove Logo</span>
-        </div>
+        
       </div>
 
     </Drawer>);
@@ -220,10 +229,10 @@ export default function Shirt(props) {
       <div className='md:flex hidden'>
         <div className='drawer-pc'>
           <div className='pc-container'>
-            <button className=' text-white text-5xl mb-8 ' onClick={toggleDrawer}><IoIosColorPalette /></button>
-            <button className=' text-white text-5xl ' onClick={toggleDrawer2}><IoIosImage /></button>
-            <button className=' text-white text-4xl mt-8 ' onClick={toggleDrawer3}><BsPersonBoundingBox /></button>
-            <button className=' text-white text-5xl mt-8 ' onClick={toggleDrawer}><TiTickOutline /></button>
+            <button className=' text-white text-3xl mb-8 ' onClick={toggleDrawer}><IoIosColorPalette /></button>
+            <button className=' text-white text-3xl ' onClick={toggleDrawer2}><IoIosImage /></button>
+            <button className=' text-white text-2xl mt-8 ' onClick={toggleDrawer3}><BsPersonBoundingBox /></button>
+            <button className=' text-white text-3xl mt-8 ' onClick={toggleDrawer}><TiTickOutline /></button>
 
           </div>
         </div>
@@ -236,7 +245,7 @@ export default function Shirt(props) {
       <div className='block md:hidden'>
         <div className='mt-0 flex flex-col w-full' >
 
-          <div className="w-full" style={{ height: '80vh' }}> <Canvas shadows>
+          <div className="w-full" style={{ height: '70vh' }}> <Canvas shadows>
             <Scene color={newcolor} texture={texture} logo={logo} />
             {/* <Environment preset="city" /> */}
 
@@ -250,7 +259,7 @@ export default function Shirt(props) {
       <div className='hidden md:block'>
         <div className='mt-5 flex flex-col w-full' >
 
-          <div className="w-full" style={{ height: '80vh' }}> <Canvas shadows>
+          <div className="w-full" style={{ height: '70vh' }}> <Canvas shadows>
             <Scene color={newcolor} texture={texture}  logo={logo} />
             {/* <Environment preset="city" /> */}
 

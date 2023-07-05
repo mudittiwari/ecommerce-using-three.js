@@ -8,10 +8,10 @@ function Navbar() {
                         <h1 className="text-darktheme-500 text-2xl">3Commerce</h1>
                     </a>
                     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                        <a className="mr-5 text-darktheme-500 text-lg cursor-pointer">Home</a>
-                        <a className="mr-5 text-darktheme-500 text-lg cursor-pointer">Orders</a>
-                        <a className="mr-5 text-darktheme-500 text-lg cursor-pointer">Cart</a>
-                        <a className="mr-5 text-darktheme-500 text-lg cursor-pointer">Wishlist</a>
+                        <a className="mr-5 text-darktheme-500 text-base cursor-pointer">Home</a>
+                        <a className="mr-5 text-darktheme-500 text-base cursor-pointer">Orders</a>
+                        <a className="mr-5 text-darktheme-500 text-base cursor-pointer">Cart</a>
+                        <a className="mr-5 text-darktheme-500 text-base cursor-pointer">Wishlist</a>
                     </nav>
                     <div className='flex'>
                         <div onClick={() => {
