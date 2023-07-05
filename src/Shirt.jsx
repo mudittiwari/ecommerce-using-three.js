@@ -6,7 +6,7 @@ import {
   PresentationControls,
   Stage
 } from '@react-three/drei';
-import { SketchPicker } from 'react-color';
+import { SketchPicker,TwitterPicker } from 'react-color';
 import { Shirtcomp } from './3Dcomps/Shirtcomp';
 import { AmbientLight } from 'three';
 import Drawer from 'react-modern-drawer'
@@ -69,14 +69,15 @@ export default function Shirt(props) {
 
         open={isOpen}
         onClose={toggleDrawer}
-        enableOverlay={false}
+        enableOverlay={true}
         direction='bottom'
+        size={150}
         className='bla bla bla'
       >
         <div className="w-full p-2">
-          <div style={{ 'width': '30%' }}>
+          <div style={{ 'width': '100%' }}>
             <h1 className='text-darktheme-500 text-center my-2 '>Color Picker</h1>
-            <SketchPicker width="100%" disableAlpha={true} color={newcolor} onChangeComplete={(color) => {
+            <TwitterPicker triangle='top-left' width="100%" disableAlpha={true} color={newcolor} onChangeComplete={(color) => {
 
               setnewcolor(color)
             }} onChange={((color, event) => {
@@ -88,6 +89,96 @@ export default function Shirt(props) {
       </Drawer>
     );
   }
+  function drawermobile2() {
+    return (<Drawer
+      open={isOpen2}
+      size={200}
+      onClose={toggleDrawer2}
+      enableOverlay={true}
+      direction='bottom'
+    >
+      <div className="w-full px-5  h-full overflow-y-scroll flex flex-col items-center justify-start">
+        
+        <div style={{ 'width': '100%', 'height': 'max-content' }}>
+          <h1 className='text-darktheme-500 text-center my-2 text-2xl font-bold mt-5'>Texture Picker</h1>
+          <div onClick={() => {
+          settexture(-1);
+        }} class="w-40 mb-5 mx-auto rounded-md px-3.5 mt-5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-darktheme-500 text-darktheme-500 hover:text-white">
+          <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-darktheme-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+          <span class="relative text-darktheme-500 transition duration-300 group-hover:text-white ease">Remove Texture</span>
+        </div>
+          <div className='w-full flex justify-around flex-wrap'>
+            <img src={Texture} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              settexture(0)
+            }} />
+            <img src={Texture1} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              settexture(1)
+            }} />
+            <img src={Texture2} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              settexture(2)
+            }} />
+            <img src={Texture3} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              settexture(3)
+            }} />
+            <img src={Texture4} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              settexture(4)
+            }} />
+            <img src={Texture4} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              settexture(5)
+            }} />
+            
+          </div>
+        </div>
+       
+      </div>
+
+    </Drawer>);
+  }
+  function drawermobile3() {
+    return (<Drawer
+      open={isOpen3}
+      size={350}
+      onClose={toggleDrawer3}
+      enableOverlay={true}
+      direction='bottom'
+    >
+     <div className="w-full px-5 overflow-y-scroll  h-full flex flex-col items-center justify-start">
+        <div style={{ 'width': '100%', 'height': 'max-content' }}>
+          <h1 className='text-darktheme-500 text-center my-2 text-2xl font-bold mt-5'>Logo Picker</h1>
+          <div onClick={() => {
+          setlogo(-1);
+        }} class="w-36 mb-5 mx-auto rounded-md px-3.5 mt-5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-darktheme-500 text-darktheme-500 hover:text-white">
+          <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-darktheme-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+          <span class="relative text-darktheme-500 transition duration-300 group-hover:text-white ease">Remove Logo</span>
+        </div>
+          <div className='w-full flex justify-around flex-wrap'>
+            <img src={Logo} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(0)
+            }} />
+            <img src={Logo1} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(1)
+            }} />
+            <img src={Logo2} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(2)
+            }} />
+            <img src={Logo3} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(3)
+            }} />
+            <img src={Logo4} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(4)
+            }} />
+            <img src={Logo5} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(5)
+            }} />
+          </div>
+        </div>
+        
+      </div>
+
+    </Drawer>);
+  }
+
+
   function drawerpc() {
     return (
       <Drawer
@@ -211,13 +302,16 @@ export default function Shirt(props) {
       </div>
       <div className='block md:hidden'>
         {drawermobile()}
+        {drawermobile2()}
+        {drawermobile3()}
       </div>
       <div className='flex md:hidden'>
         <div className='drawer-mobile '>
           <div className='mobile-container '>
-            <button className=' text-white text-5xl mr-8 ' onClick={toggleDrawer}><IoIosColorPalette /></button>
-            <button className=' text-white text-5xl ' onClick={toggleDrawer}><IoIosImage /></button>
-            <button className=' text-white text-5xl ml-8 ' onClick={toggleDrawer}><TiTickOutline /></button>
+            <button className=' text-white text-2xl mr-8 ' onClick={toggleDrawer}><IoIosColorPalette /></button>
+            <button className=' text-white text-2xl mr-8' onClick={toggleDrawer2}><IoIosImage /></button>
+            <button className=' text-white text-2xl  ' onClick={toggleDrawer3}><BsPersonBoundingBox /></button>
+            <button className=' text-white text-2xl ml-8 ' onClick={toggleDrawer}><TiTickOutline /></button>
           </div>
         </div>
       </div>

@@ -1,6 +1,44 @@
+
+import Drawer from 'react-modern-drawer'
+import 'react-modern-drawer/dist/index.css'
+import {FaHamburger} from 'react-icons/fa'
+import React from 'react'
 function Navbar() {
+    function drawermobile() {
+        return (
+          <Drawer
+    
+            open={isOpen}
+            onClose={toggleDrawer}
+            enableOverlay={true}
+            direction='left'
+            size={150}
+            className='bla bla bla'
+          >
+            <div className="w-full p-2">
+            
+            </div>
+    
+          </Drawer>
+        );
+      }
+    const [isOpen, setIsOpen] = React.useState(false)
+    const toggleDrawer = () => {
+        setIsOpen((prevState) => !prevState)
+      }
+    
     return (
         <>
+            <div className="block md:hidden">
+                {drawermobile()}
+                <header className="text-gray-600 body-font shadow-xl py-4" style={{'background':'#eeeeeb'}}>
+                    <div className="w-full flex justify-between">
+                    <FaHamburger className="text-2xl ml-3 cursor-pointer"/>
+                    <h1 className="text-darktheme-500 text-2xl mr-3">3Commerce</h1>
+                    </div>
+                        </header>
+            </div>
+            <div className="hidden md:block">
             <header className="text-gray-600 body-font shadow-xl" style={{'background':'#eeeeeb'}}>
                 <div className="w-full flex flex-wrap p-5 flex-col md:flex-row items-center">
                     <a className="flex title-font font-medium items-center text-darktheme-500 mb-4 md:mb-0">
@@ -29,6 +67,7 @@ function Navbar() {
                     </div>
                 </div>
             </header>
+            </div>
         </>
     );
 }
