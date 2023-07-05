@@ -32,7 +32,7 @@ function Navbar() {
             <div className="block md:hidden">
                 {drawermobile()}
                 <header className="text-gray-600 body-font shadow-xl py-4" style={{'background':'#eeeeeb'}}>
-                    <div className="w-full flex justify-between">
+                    <div className="w-full flex justify-between items-center">
                     <FaHamburger className="text-2xl ml-3 cursor-pointer"/>
                     <h1 className="text-darktheme-500 text-2xl mr-3">3Commerce</h1>
                     </div>
