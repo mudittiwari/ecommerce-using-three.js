@@ -150,12 +150,7 @@ export default function Shirt(props) {
             <img src={Texture4} className='w-5/12 cursor-pointer my-2' onClick={() => {
               settexture(5)
             }} />
-            <img src={Texture4} className='w-5/12 cursor-pointer my-2' onClick={() => {
-              settexture(5)
-            }} />
-            <img src={Texture4} className='w-5/12 cursor-pointer my-2' onClick={() => {
-              settexture(5)
-            }} />
+            
           </div>
         </div>
        
