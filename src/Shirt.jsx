@@ -12,6 +12,7 @@ import { AmbientLight } from 'three';
 import Drawer from 'react-modern-drawer'
 import { IoIosColorPalette, IoIosImage } from 'react-icons/io'
 import { TiTickOutline } from 'react-icons/ti'
+import { BsPersonBoundingBox } from 'react-icons/bs';
 
 import 'react-modern-drawer/dist/index.css'
 import Texture from './textures/texture.png';
@@ -20,12 +21,18 @@ import Texture2 from './textures/texture2.jpg';
 import Texture3 from './textures/texture3.jpg';
 import Texture4 from './textures/texture4.jpg';
 import Texture5 from './textures/texture5.png';
+import Logo from './logos/logo.jfif';
+import Logo1 from './logos/logo1.jfif';
+import Logo2 from './logos/logo2.jfif';
+import Logo3 from './logos/logo3.jfif';
+import Logo4 from './logos/logo4.jfif';
+import Logo5 from './logos/logo5.jfif';
 function Scene(props) {
 
   return (
     <>
       <Stage environment={null} intensity={1} castShadow={false} >
-        <Shirtcomp color={props.color.hex} texture={props.texture} />
+        <Shirtcomp color={props.color.hex} texture={props.texture} logo={props.logo} />
       </Stage>
       <OrbitControls enableZoom={true} minPolarAngle={Math.PI / 2}
         maxPolarAngle={Math.PI / 2} />
@@ -36,15 +43,24 @@ function Scene(props) {
 export default function Shirt(props) {
   const [newcolor, setnewcolor] = useState({ 'hex': '#ffffff' })
   const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen3, setIsOpen3] = React.useState(false)
   const [isOpen2, setIsOpen2] = React.useState(false)
-  const [texture,settexture]=useState(0)
+  const [texture, settexture] = useState(-1)
+  const [logo, setlogo] = useState(-1)
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState)
     setIsOpen2(false)
+    setIsOpen3(false)
   }
   const toggleDrawer2 = () => {
     setIsOpen2((prevState) => !prevState)
     setIsOpen(false)
+    setIsOpen3(false)
+  }
+  const toggleDrawer3 = () => {
+    setIsOpen3((prevState) => !prevState)
+    setIsOpen(false)
+    setIsOpen2(false)
   }
 
   function drawermobile() {
@@ -59,7 +75,7 @@ export default function Shirt(props) {
       >
         <div className="w-full p-2">
           <div style={{ 'width': '30%' }}>
-            <h1 className='text-black text-center my-2 '>Color Picker</h1>
+            <h1 className='text-darktheme-500 text-center my-2 '>Color Picker</h1>
             <SketchPicker width="100%" disableAlpha={true} color={newcolor} onChangeComplete={(color) => {
 
               setnewcolor(color)
@@ -82,9 +98,9 @@ export default function Shirt(props) {
         direction='right'
         className='bla bla bla'
       >
-        <div className="w-full px-5 h-full flex flex-col items-center justify-center">
+        <div className="w-full px-5 h-full flex flex-col items-center justify-start">
           <div style={{ 'width': '100%' }}>
-            <h1 className='text-black text-center my-2 text-2xl font-bold'>Color Picker</h1>
+            <h1 className='text-darktheme-500 text-center mt-5 my-2 text-2xl font-bold'>Color Picker</h1>
             <SketchPicker width="100%" disableAlpha={true} color={newcolor} onChangeComplete={(color) => {
 
               setnewcolor(color)
@@ -105,9 +121,9 @@ export default function Shirt(props) {
       enableOverlay={false}
       direction='right'
     >
-      <div className="w-full px-5 h-full flex flex-col items-center justify-center">
-        <div style={{ 'width': '100%','height':'100%' }}>
-          <h1 className='text-black text-center my-2 text-2xl font-bold mt-5'>Texture Picker</h1>
+      <div className="w-full px-5 h-full flex flex-col items-center justify-start">
+        <div style={{ 'width': '100%', 'height': 'max-content' }}>
+          <h1 className='text-darktheme-500 text-center my-2 text-2xl font-bold mt-5'>Texture Picker</h1>
           <div className='w-full flex justify-around flex-wrap'>
             <img src={Texture} className='w-5/12 cursor-pointer my-2' onClick={() => {
               settexture(0)
@@ -129,6 +145,54 @@ export default function Shirt(props) {
             }} />
           </div>
         </div>
+        <div onClick={() => {
+          settexture(-1);
+        }} class="rounded-md px-3.5 mt-5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-darktheme-500 text-darktheme-500 hover:text-white">
+          <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-darktheme-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+          <span class="relative text-darktheme-500 transition duration-300 group-hover:text-white ease">Remove Texture</span>
+        </div>
+      </div>
+
+    </Drawer>);
+  }
+  function drawerpc3() {
+    return (<Drawer
+      open={isOpen3}
+      size={350}
+      onClose={toggleDrawer3}
+      enableOverlay={false}
+      direction='right'
+    >
+     <div className="w-full px-5 h-full flex flex-col items-center justify-start">
+        <div style={{ 'width': '100%', 'height': 'max-content' }}>
+          <h1 className='text-darktheme-500 text-center my-2 text-2xl font-bold mt-5'>Logo Picker</h1>
+          <div className='w-full flex justify-around flex-wrap'>
+            <img src={Logo} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(0)
+            }} />
+            <img src={Logo1} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(1)
+            }} />
+            <img src={Logo2} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(2)
+            }} />
+            <img src={Logo3} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(3)
+            }} />
+            <img src={Logo4} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(4)
+            }} />
+            <img src={Logo5} className='w-5/12 cursor-pointer my-2' onClick={() => {
+              setlogo(5)
+            }} />
+          </div>
+        </div>
+        <div onClick={() => {
+          setlogo(-1);
+        }} class="rounded-md px-3.5 mt-5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-darktheme-500 text-darktheme-500 hover:text-white">
+          <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-darktheme-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+          <span class="relative text-darktheme-500 transition duration-300 group-hover:text-white ease">Remove Logo</span>
+        </div>
       </div>
 
     </Drawer>);
@@ -138,11 +202,8 @@ export default function Shirt(props) {
     <>
       <div className='hidden md:block'>
         {drawerpc()}
-
-      </div>
-      <div className='hidden md:block'>
         {drawerpc2()}
-
+        {drawerpc3()}
       </div>
       <div className='block md:hidden'>
         {drawermobile()}
@@ -161,7 +222,9 @@ export default function Shirt(props) {
           <div className='pc-container'>
             <button className=' text-white text-5xl mb-8 ' onClick={toggleDrawer}><IoIosColorPalette /></button>
             <button className=' text-white text-5xl ' onClick={toggleDrawer2}><IoIosImage /></button>
+            <button className=' text-white text-4xl mt-8 ' onClick={toggleDrawer3}><BsPersonBoundingBox /></button>
             <button className=' text-white text-5xl mt-8 ' onClick={toggleDrawer}><TiTickOutline /></button>
+
           </div>
         </div>
       </div>
@@ -174,7 +237,7 @@ export default function Shirt(props) {
         <div className='mt-0 flex flex-col w-full' >
 
           <div className="w-full" style={{ height: '80vh' }}> <Canvas shadows>
-            <Scene color={newcolor} texture={texture} />
+            <Scene color={newcolor} texture={texture} logo={logo} />
             {/* <Environment preset="city" /> */}
 
           </Canvas></div>
@@ -185,10 +248,10 @@ export default function Shirt(props) {
       </div>
 
       <div className='hidden md:block'>
-        <div className='mt-0 flex flex-col w-full' >
+        <div className='mt-5 flex flex-col w-full' >
 
           <div className="w-full" style={{ height: '80vh' }}> <Canvas shadows>
-            <Scene color={newcolor} texture={texture} />
+            <Scene color={newcolor} texture={texture}  logo={logo} />
             {/* <Environment preset="city" /> */}
 
           </Canvas></div>

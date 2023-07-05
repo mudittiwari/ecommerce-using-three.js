@@ -3,26 +3,36 @@ import { useGLTF } from "@react-three/drei";
 import { useTexture } from "@react-three/drei";
 export function Shirtcomp(props) {
   const { nodes, materials } = useGLTF("/shirt.glb");
-  const [show, setshow] = React.useState(false);
   const groupRef = useRef();
-  const logo = useTexture({
-    map: 'https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg',
-  })
+  // console.log(props.logo);
+
   const Textures = [useTexture({
     map: 'textures/texture.png',
-  }),useTexture({
+  }), useTexture({
     map: 'textures/texture1.jpg',
-  }),useTexture({
+  }), useTexture({
     map: 'textures/texture2.jpg',
-  }),useTexture({
+  }), useTexture({
     map: 'textures/texture3.jpg',
-  }),useTexture({
+  }), useTexture({
     map: 'textures/texture4.jpg',
-}),useTexture({
-  map: 'textures/texture5.png',
-})]
-
-  console.log(console.log(nodes.T_Shirt_male.geometry))
+  }), useTexture({
+    map: 'textures/texture5.png',
+  })]
+  const Logos = [useTexture({
+    map: 'logos/logo.jpg',
+  }), useTexture({
+    map: 'logos/logo1.jpg',
+  }), useTexture({
+    map: 'logos/logo2.jpg',
+  }), useTexture({
+    map: 'logos/logo3.jpg',
+  }), useTexture({
+    map: 'logos/logo4.jpg',
+  }), useTexture({
+    map: 'logos/logo5.jpg',
+  })]
+  console.log(Logos);
   return (
     <group dispose={null}>
       <mesh
@@ -31,12 +41,13 @@ export function Shirtcomp(props) {
         geometry={nodes.T_Shirt_male.geometry}
       >
 
-        <meshStandardMaterial color={props.color} attach="material" {...Textures[props.texture]} />
+        {props.texture != -1 && <meshStandardMaterial color={props.color} attach="material" {...Textures[props.texture]} />}
+        {props.texture == -1 && <meshStandardMaterial color={props.color} attach="material" />}
       </mesh>
-      <mesh position={[0, 0, 0.1]}>
-        <boxBufferGeometry attach="geometry" args={[0.1, .1, .08]} />
-        <meshStandardMaterial attach="material" {...logo} color={props.color} />
-      </mesh>
+        {props.logo !=-1 && <mesh position={[0, 0, 0.1]}>
+          <boxBufferGeometry attach="geometry" args={[0.1, .1, .08]} />
+          <meshStandardMaterial attach="material" {...Logos[props.logo]}  />
+        </mesh>}
     </group>
   );
 }
